@@ -56,6 +56,7 @@ import Menubar from 'primevue/menubar'
 import Dialog from 'primevue/dialog'
 import Checkbox from 'primevue/checkbox'
 import { games } from './games'
+import { ref } from 'vue'
 
 const selectedGames = ref(games)
 const showSettings = ref(false)
