@@ -5,8 +5,8 @@
             <div class="mb-8">Runde: {{ amountOfGamesPlayed }}/6</div>
             <div class="mb-8">Spiel: {{ currentGame }}</div>
 
-            <Spinner class="mb-4" />
-            <Button class="mb-6">SPIN</Button>
+            <Spinner class="mb-6" @selected:game="onGameSelect" />
+
             <div class="flex w-full">
                 <div class="basis-1/2 flex items-center flex-col gap-8">
                     <InputText v-model="playerName1" />
@@ -32,12 +32,12 @@
         >
             <div class="flex flex-col gap-4">
                 <div
-                    v-for="game in games"
+                    v-for="game in gameStore.games"
                     :key="game"
                     class="flex items-center gap-2"
                 >
                     <Checkbox
-                        v-model="selectedGames"
+                        v-model="gameStore.games"
                         :inputId="game"
                         name="category"
                         :value="game"
@@ -49,18 +49,17 @@
     </div>
 </template>
 <script setup>
-import Spinner from './components/Spinner.vue'
 import Button from 'primevue/button'
+import Checkbox from 'primevue/checkbox'
+import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import Menubar from 'primevue/menubar'
-import Dialog from 'primevue/dialog'
-import Checkbox from 'primevue/checkbox'
-import { games } from './games'
 import { ref } from 'vue'
+import Spinner from './components/Spinner.vue'
+import { useGameStore } from './store/gameStore'
 
-const selectedGames = ref(games)
+const gameStore = useGameStore()
 const showSettings = ref(false)
-
 const amountOfGamesPlayed = ref(1)
 const currentGame = ref('')
 const playerName1 = ref('Spieler 1')
@@ -96,5 +95,10 @@ function winning(player) {
     }
 
     amountOfGamesPlayed.value++
+}
+
+function onGameSelect(game) {
+    console.log(game)
+    currentGame.value = game
 }
 </script>
