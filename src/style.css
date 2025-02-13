@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+
+body,
+#app {
+    height: 100vh;
+    width: 100vw;
+
+    @apply bg-stone-900;
+}
