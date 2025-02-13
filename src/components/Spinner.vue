@@ -23,7 +23,7 @@ import Button from 'primevue/button'
 
 const { amountOfGames, games } = storeToRefs(useGameStore())
 const emit = defineEmits(['selected:game'])
-const rotate = ref(5)
+const rotate = ref(360 / amountOfGames.value / 2)
 const calculateGradient = computed(() => {
     const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
     const gradient = []
@@ -48,6 +48,6 @@ function spin() {
 
     setTimeout(() => {
         emit('selected:game', games.value[random])
-    }, 5000)
+    }, 500)
 }
 </script>
