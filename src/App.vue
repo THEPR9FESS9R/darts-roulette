@@ -2,7 +2,7 @@
     <div class="h-full w-full flex flex-col items-center text-white">
         <Menubar :model="items" class="w-full" />
         <div class="flex flex-col items-center text-white p-4 pt-8 w-full">
-            <div class="mb-8">Runde: {{ amountOfGamesPlayed }}/6</div>
+            <div class="mb-8">Sven is cool: {{ amountOfGamesPlayed }}/6</div>
             <div class="mb-8">Spiel: {{ currentGame }}</div>
 
             <Spinner class="mb-6" @selected:game="onGameSelect" />
@@ -19,8 +19,8 @@
                     <InputText v-model="playerName2" />
                     Punkte: {{ player2Points }}
                     <Button class="mb-6" @click="winning(2)"
-                        >Spieler 2 gewinnt</Button
-                    >
+                        >Spieler 2 gewinn
+                    </Button>
                 </div>
             </div>
         </div>
